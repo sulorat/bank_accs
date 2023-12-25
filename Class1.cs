@@ -23,14 +23,6 @@ namespace bank
             this.sum = sum;
             accs.Add(this);
         }
-        private void open(string fio, float sum)
-        {
-            accs_counter++;
-            number = accs_counter;
-            this.fio = fio;
-            this.sum = sum;
-            accs.Add(this);
-        }
         private float get_money(int index)
         {
             return accs[index - 1].sum;
@@ -42,7 +34,7 @@ namespace bank
         }
         private void Out()
         {
-            Console.WriteLine("number of deposit : " + number + "\n name of owner: " + fio + "\n money on acc: " + sum);
+            Console.WriteLine("Name of owner: " + fio + "\n money on acc: " + sum);
         }
         private void dob(float sum)
         {
@@ -81,17 +73,14 @@ namespace bank
                             Console.WriteLine("Enter money on acc: ");
                             money = float.Parse(Console.ReadLine());
                             i++;
-                            accs.Add(new bank_account(fio, money));
+                            new bank_account(fio, money);
                             Console.WriteLine("You create acc and need to enter some acc");
                             Console.WriteLine("Press any key to continue: ");
                             Console.ReadKey();
                             break;
                         case ConsoleKey.P:
                             Console.WriteLine("Enter which account you want to choose. ");
-                            for (int j = 2; j < i + 1; j++)
-                            {
-                                Console.WriteLine(j);
-                            }
+                                Console.WriteLine("You have: " + accs.Count + " accs");
                             int num = int.Parse(Console.ReadLine());
                             if ((num > accs.Count) || (num <= 0))
                             {
